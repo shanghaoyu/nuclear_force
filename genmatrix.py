@@ -9,13 +9,12 @@ Jmax=8
 NMesh=100
 kl=0
 ku=8
-output_file="name.d"
+output_file="cdbonn.d"
 
 ##########################################
 #generate partial waves we need
 
 pws=pw.Partialwaves(Jmax)
-print("hlello")
 ##########################################
 #generate gausslegendre meshpoints and mesh weights
 

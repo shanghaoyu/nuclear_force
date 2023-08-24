@@ -1,0 +1,49 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module force_module ! in 
+    interface  ! in :force_module
+        function emn500(lp,l,kp,k,j,s,tz) ! in :force_module:wrapforce.f90
+            integer intent(in) :: lp
+            integer intent(in) :: l
+            real*8 intent(in) :: kp
+            real*8 intent(in) :: k
+            integer intent(in) :: j
+            integer intent(in) :: s
+            integer intent(in) :: tz
+            real*8 dimension(6) :: v
+            real*8 :: xmev
+            real*8 :: ymev
+            integer :: jp
+            logical :: heform
+            logical :: sing
+            logical :: trip
+            logical :: coup
+            integer :: inn
+            real*8 :: emn500
+        end function emn500
+        function cdbonnpot(lp,l,kp,k,j,s,tz) ! in :force_module:wrapforce.f90
+            integer intent(in) :: lp
+            integer intent(in) :: l
+            real*8 intent(in) :: kp
+            real*8 intent(in) :: k
+            integer intent(in) :: j
+            integer intent(in) :: s
+            integer intent(in) :: tz
+            real*8 dimension(6) :: v
+            real*8 :: xmev
+            real*8 :: ymev
+            integer :: jp
+            logical :: heform
+            logical :: sing
+            logical :: trip
+            logical :: coup
+            integer :: inn
+            real*8 :: cdbonnpot
+        end function cdbonnpot
+    end interface 
+end python module force_module
+
+! This file was auto-generated with f2py (version:1.24.2).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e
