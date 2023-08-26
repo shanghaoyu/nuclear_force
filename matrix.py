@@ -79,7 +79,7 @@ class Matrix:
         # when the self.single is false,return an array:[v--,v-+,v+-,v++]
         # only 1S0 3S1 and 3SD1 using the first formula
         vsingle=0
-        vcouple=np.zeros((4))
+        vcouple=[0,0,0,0]
         if self.single == True:
             if (self.J == 0) and (self.S == 0): 
                 #1S0
