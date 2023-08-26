@@ -2,6 +2,7 @@ import numpy as np
 import matrix as mt
 import partialwaves as pw
 import gausslegendremesh as gl
+import force_module as pot
 
 ##########################################
 #set the parameters
@@ -39,7 +40,7 @@ with open(output_file, "w") as outfile:
         outfile.write(f"Tz:\n{pws.Tz[i]}\n")
 
         #generate the matrix
-        matrix=mt.Matrix(pws.J[i],pws.S[i],pws.Tz[i],pws.single[i],kl,ku,NMesh)
+        matrix=mt.Matrix(pot.cdbonnpot,pws.J[i],pws.S[i],pws.Tz[i],pws.single[i],kl,ku,NMesh)
         outfile.write(f"Ndim:\n{matrix.Ndim}\n")
         outfile.write("V:\n")
         if pws.single[i]==True:
