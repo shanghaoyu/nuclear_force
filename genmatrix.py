@@ -5,24 +5,24 @@ import gausslegendremesh as gl
 import force_module as pot
 
 ##########################################
-#set the parameters
-Jmax=8
-NMesh=100
-kl=0
-ku=8
-output_file="cdbonn.d"
+# set the parameters
+Jmax = 8
+NMesh = 100
+kl = 0
+ku = 8
+output_file = "n2losat.dat"
 
 ##########################################
-#generate partial waves we need
+# generate partial waves we need
 
-pws=pw.Partialwaves(Jmax)
+pws = pw.Partialwaves(Jmax)
 ##########################################
-#generate gausslegendre meshpoints and mesh weights
+# generate gausslegendre meshpoints and mesh weights
 
-mesh_points,mesh_weights=gl.gauss_legendre_line_mesh(NMesh,kl,ku)
+mesh_points, mesh_weights = gl.gauss_legendre_line_mesh(NMesh, kl, ku)
 
 ##########################################
-#write the matrix
+# write the matrix
 
 with open(output_file, "w") as outfile:
     outfile.write(f"NMesh:\n{NMesh}\n")
@@ -43,7 +43,7 @@ with open(output_file, "w") as outfile:
         matrix=mt.Matrix(pot.cdbonnpot,pws.J[i],pws.S[i],pws.Tz[i],pws.single[i],kl,ku,NMesh)
         outfile.write(f"Ndim:\n{matrix.Ndim}\n")
         outfile.write("V:\n")
-        if pws.single[i]==True:
+        if pws.single[i] == True:
             np.savetxt(outfile, matrix.vsingle, fmt="%.17f")
-        elif pws.single[i]==False:
+        elif pws.single[i] == False:
             np.savetxt(outfile, matrix.vcouple, fmt="%.17f")

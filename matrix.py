@@ -1,13 +1,13 @@
 import numpy as np
-import gausslegendremesh as gl 
+import gausslegendremesh as gl
 from scipy.special import spherical_jn
 from scipy.special import gamma
 
 
 class Matrix:
     # matrix class:generate the matrix we need
-####################################################################
-    # momentum space    
+    ####################################################################
+    # momentum space
     # kp,k ------ fm^-1
     # V    ------ Mev fm^-3
 ####################################################################
@@ -15,38 +15,38 @@ class Matrix:
         # original in momentum space
         # when single == True ,the matrix elements are saved in self.vsingle
         # when single == False ,the matrix elements are saved in self.vcouple(self.vpp,self.vpm,self.vmp,self.vmm)
-        
-        self.J=J
-        self.S=S
-        self.Tz=Tz
-        self.single=single
-        self.kl=kl
-        self.ku=ku
-        self.N=N
-        self.Ndim=0
-        
-        if mesh_type == 'gauleg_infinite':
-            self.MeshPoints, self.MeshWeights =gl.gauss_legendre_inf_mesh(N)
-        elif mesh_type == 'gauleg_finite':
-            self.MeshPoints, self.MeshWeights =gl.gauss_legendre_line_mesh(N,kl,ku)
+
+        self.J = J
+        self.S = S
+        self.Tz = Tz
+        self.single = single
+        self.kl = kl
+        self.ku = ku
+        self.N = N
+        self.Ndim = 0
+
+        if mesh_type == "gauleg_infinite":
+            self.MeshPoints, self.MeshWeights = gl.gauss_legendre_inf_mesh(N)
+        elif mesh_type == "gauleg_finite":
+            self.MeshPoints, self.MeshWeights = gl.gauss_legendre_line_mesh(N, kl, ku)
         else:
             print("error in gausslegendre mesh points generation.")
 
         # single channel matrix
-        self.vsingle=np.zeros((N,N))
+        self.vsingle = np.zeros((N, N))
 
         # couple channel matrix
-        self.vpp=np.zeros((N,N))
-        self.vpm=np.zeros((N,N))
-        self.vmp=np.zeros((N,N))
-        self.vmm=np.zeros((N,N))
-        self.vcouple=np.zeros((2*N,2*N))
-        
-        #cauculate the matrix element
-        if single== True:
-            self.Ndim=N
-            if J ==0:
-                if S==0:
+        self.vpp = np.zeros((N, N))
+        self.vpm = np.zeros((N, N))
+        self.vmp = np.zeros((N, N))
+        self.vmm = np.zeros((N, N))
+        self.vcouple = np.zeros((2 * N, 2 * N))
+
+        # cauculate the matrix element
+        if single == True:
+            self.Ndim = N
+            if J == 0:
+                if S == 0:
                     for i in range(N):
                         for j in range(N):
                             self.vsingle[i][j]=potential(J,J,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz)
@@ -56,20 +56,20 @@ class Matrix:
                             self.vsingle[i][j]=potential(J+1,J+1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz)
                 else:
                     print("This channel is prohibited!")
-            elif J >=1:
+            elif J >= 1:
                 for i in range(N):
                         for j in range(N):
-                            self.vsingle[i][j]=potential(J,J,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz) 
+                            self.vsingle[i][j]=potential(J,J,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz)
             else:
                 print("This channel is prohibited!")
-        elif single== False:
-            self.Ndim=2*N
+        elif single == False:
+            self.Ndim = 2 * N
             for i in range(N):
                 for j in range(N):
-                    self.vpp[i][j]=potential(J+1,J+1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz) 
+                    self.vpp[i][j]=potential(J+1,J+1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz)
                     self.vpm[i][j]=potential(J+1,J-1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz)
-                    self.vmp[i][j]=potential(J-1,J+1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz) 
-                    self.vmm[i][j]=potential(J-1,J-1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz) 
+                    self.vmp[i][j]=potential(J-1,J+1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz)
+                    self.vmm[i][j]=potential(J-1,J-1,self.MeshPoints[i],self.MeshPoints[j],J,S,Tz)
             self.vcouple=np.block([[self.vmm,self.vmp],[self.vpm,self.vpp]])
 ############################################################################
 #        local project(momentum space to coordinate space)
@@ -81,7 +81,7 @@ class Matrix:
         vsingle=0
         vcouple=[0,0,0,0]
         if self.single == True:
-            if (self.J == 0) and (self.S == 0): 
+            if (self.J == 0) and (self.S == 0):
                 #1S0
                 for idx,k in enumerate(self.MeshPoints):
                     vsingle += k**2 * self.MeshWeights[idx] * spherical_jn(0, k*r) *self.vsingle[idx][0]
@@ -100,8 +100,8 @@ class Matrix:
                         vsingle += self.MeshWeights[i]*self.MeshWeights[j]*(kp**2/k) * spherical_jn(self.J, kp*r) * self.vsingle[i][j]
                 vsingle=vsingle*norm
             return vsingle
-        elif self.single == False:    
-            if (self.J == 1) : 
+        elif self.single == False:
+            if (self.J == 1) :
                 # 3S1 and 3SD1
                 for idx,k in enumerate(self.MeshPoints):
                     # 3S1
