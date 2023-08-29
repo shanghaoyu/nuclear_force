@@ -1,0 +1,5 @@
+
+f2py wrapforce.f90 -h wrapforce.pyf -m force_module
+
+f2py -c wrapforce.pyf wrapforce.f90 cdbonn.f lo450.f lo500.f lo550.f nlo450.f nlo500.f nlo550.f n2lo450.f n2lo500.f n2lo550.f n3lo450new.f n3lo500new.f n3lo550new.f n4lo450.f n4lo500.f n4lo550.f nnlo_opt.f nnlo_sat.f
+
