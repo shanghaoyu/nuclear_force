@@ -1,3 +1,5 @@
+         module n2lo500m
+            contains
          subroutine n2lo500
 c
 c******************************************************************
@@ -6413,3 +6415,4 @@ c
   150 return
       end
 c**************** this is the end of the program n2lo500 ********************
+      end module

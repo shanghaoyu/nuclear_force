@@ -1,3 +1,5 @@
+         module n4lo550m
+            contains
          subroutine n4lo550
 c
 c******************************************************************
@@ -8281,3 +8283,4 @@ c
   150 return
       end
 c**************** this is the end of the program n4lo550 ********************
+      end module

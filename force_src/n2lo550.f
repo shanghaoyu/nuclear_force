@@ -1,4 +1,6 @@
-         subroutine n2lo550
+        module n2lo550m
+            contains
+        subroutine n2lo550
 c
 c******************************************************************
 c
@@ -6416,3 +6418,4 @@ c
   150 return
       end
 c**************** this is the end of the program n2lo550 ********************
+      end module

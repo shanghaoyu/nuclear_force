@@ -1,3 +1,5 @@
+         module nnlo_satm
+            contains
          subroutine nnlo_sat
 c
 c******************************************************************
@@ -5040,3 +5042,4 @@ c
   150 return
       end
 c**************** this is the end of the program nnlo_sat **********************
+      end module

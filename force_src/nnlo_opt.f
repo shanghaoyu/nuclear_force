@@ -1,3 +1,5 @@
+         module nnlo_optm
+            contains
          subroutine nnlo_opt
 c
 c******************************************************************
@@ -5046,3 +5048,4 @@ c
   150 return
       end
 c**************** this is the end of the program nnlo **********************
+      end module

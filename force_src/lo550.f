@@ -1,3 +1,5 @@
+         module lo550m
+          contains
          subroutine lo550
 c
 c******************************************************************
@@ -4487,3 +4489,4 @@ c
   150 return
       end
 c**************** this is the end of the program lo550 ********************
+      end module

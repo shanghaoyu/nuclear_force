@@ -1,3 +1,5 @@
+         module nlo450m 
+            contains
          subroutine nlo450
 c
 c******************************************************************
@@ -4689,3 +4691,4 @@ c
   150 return
       end
 c**************** this is the end of the program nlo450 ********************
+      end module

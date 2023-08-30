@@ -73,7 +73,7 @@ function cdbonnpot(lp,l,kp,k,J,S,Tz)
 
 
 function loemn450(lp,l,kp,k,J,S,Tz)
-
+use lo450m,only:lo450
 implicit none
 real*8 :: loemn450
 real*8,intent(in) :: kp,k
@@ -86,7 +86,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external lo450
 
 heform=.false.
 sing=.true.
@@ -137,7 +136,7 @@ end function
 
 
 function loemn500(lp,l,kp,k,J,S,Tz)
-
+use lo500m,only:lo500
 implicit none
 real*8 :: loemn500
 real*8,intent(in) :: kp,k
@@ -150,7 +149,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external lo500
 
 heform=.false.
 sing=.true.
@@ -201,7 +199,7 @@ end function
 
 
 function loemn550(lp,l,kp,k,J,S,Tz)
-
+use lo550m,only:lo550
 implicit none
 real*8 :: loemn550
 real*8,intent(in) :: kp,k
@@ -214,7 +212,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external lo550
 
 heform=.false.
 sing=.true.
@@ -265,7 +262,7 @@ end function
 
 
 function nloemn450(lp,l,kp,k,J,S,Tz)
-
+use nlo450m,only:nlo450
 implicit none
 real*8 :: nloemn450
 real*8,intent(in) :: kp,k
@@ -278,7 +275,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external nlo450
 
 heform=.false.
 sing=.true.
@@ -329,7 +325,7 @@ end function
 
 
 function nloemn500(lp,l,kp,k,J,S,Tz)
-
+use nlo500m,only:nlo500
 implicit none
 real*8 :: nloemn500
 real*8,intent(in) :: kp,k
@@ -342,7 +338,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external nlo500
 
 heform=.false.
 sing=.true.
@@ -393,7 +388,7 @@ end function
 
 
 function nloemn550(lp,l,kp,k,J,S,Tz)
-
+use nlo550m,only:nlo550
 implicit none
 real*8 :: nloemn550
 real*8,intent(in) :: kp,k
@@ -406,7 +401,7 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external nlo550
+
 
 heform=.false.
 sing=.true.
@@ -457,7 +452,7 @@ end function
 
 
 function n2loemn450(lp,l,kp,k,J,S,Tz)
-
+use n2lo450m,only:n2lo450
 implicit none
 real*8 :: n2loemn450
 real*8,intent(in) :: kp,k
@@ -470,7 +465,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n2lo450
 
 heform=.false.
 sing=.true.
@@ -521,7 +515,7 @@ end function
 
 
 function n2loemn500(lp,l,kp,k,J,S,Tz)
-
+use n2lo500m,only:n2lo500
 implicit none
 real*8 :: n2loemn500
 real*8,intent(in) :: kp,k
@@ -534,7 +528,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n2lo500
 
 heform=.false.
 sing=.true.
@@ -585,7 +578,7 @@ end function
 
 
 function n2loemn550(lp,l,kp,k,J,S,Tz)
-
+use n2lo550m,only:n2lo550
 implicit none
 real*8 :: n2loemn550
 real*8,intent(in) :: kp,k
@@ -598,8 +591,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n2lo550
-
 heform=.false.
 sing=.true.
 trip=.true.
@@ -649,7 +640,7 @@ end function
 
 
 function n3loemn450(lp,l,kp,k,J,S,Tz)
-
+use n3lo450m,only:n3lo450new
 implicit none
 real*8 :: n3loemn450
 real*8,intent(in) :: kp,k
@@ -662,7 +653,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n3lo450new
 
 heform=.false.
 sing=.true.
@@ -713,7 +703,7 @@ end function
 
 
 function n3loemn500(lp,l,kp,k,J,S,Tz)
-
+use n3lo500m,only:n3lo500new
 implicit none
 real*8 :: n3loemn500
 real*8,intent(in) :: kp,k
@@ -726,7 +716,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n3lo500new
 
 heform=.false.
 sing=.true.
@@ -777,7 +766,7 @@ end function
 
 
 function n3loemn550(lp,l,kp,k,J,S,Tz)
-
+use n3lo550m,only:n3lo550new
 implicit none
 real*8 :: n3loemn550
 real*8,intent(in) :: kp,k
@@ -790,7 +779,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n3lo550new
 
 heform=.false.
 sing=.true.
@@ -841,7 +829,7 @@ end function
 
 
 function n4loemn450(lp,l,kp,k,J,S,Tz)
-
+use n4lo450m,only:n4lo450
 implicit none
 real*8 :: n4loemn450
 real*8,intent(in) :: kp,k
@@ -854,8 +842,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n4lo450
-
 heform=.false.
 sing=.true.
 trip=.true.
@@ -905,7 +891,7 @@ end function
 
 
 function n4loemn500(lp,l,kp,k,J,S,Tz)
-
+use n4lo500m,only:n4lo500
 implicit none
 real*8 :: n4loemn500
 real*8,intent(in) :: kp,k
@@ -918,7 +904,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n4lo500
 
 heform=.false.
 sing=.true.
@@ -969,7 +954,7 @@ end function
 
 
 function n4loemn550(lp,l,kp,k,J,S,Tz)
-
+use n4lo550m,only:n4lo550
 implicit none
 real*8 :: n4loemn550
 real*8,intent(in) :: kp,k
@@ -982,8 +967,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external n4lo550
-
 heform=.false.
 sing=.true.
 trip=.true.
@@ -1033,7 +1016,7 @@ end function
 
 
 function n2LOopt(lp,l,kp,k,J,S,Tz)
-
+use nnlo_optm,only:nnlo_opt
 implicit none
 real*8 :: n2LOopt
 real*8,intent(in) :: kp,k
@@ -1046,7 +1029,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external nnlo_opt
 
 heform=.false.
 sing=.true.
@@ -1097,7 +1079,7 @@ end function
 
 
 function n2LOsat(lp,l,kp,k,J,S,Tz)
-
+use nnlo_satm,only:nnlo_sat
 implicit none
 real*8 :: n2LOsat
 real*8,intent(in) :: kp,k
@@ -1110,8 +1092,6 @@ common /cpot/   v(6),xmev,ymev
 common /cstate/ jp,heform,sing,trip,coup
 common /cnn/ inn
 real*8 :: convert=197.32705d0
-external nnlo_sat
-
 heform=.false.
 sing=.true.
 trip=.true.
